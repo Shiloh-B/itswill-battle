@@ -1,10 +1,12 @@
 <script>
   import Team from "./team.svelte";
+  import store from '../store';
+  console.log($store);
 </script>
 
 <div class="team-holder">
-  <Team/>
-  <Team/>
+  <Team team={$store.team1}/>
+  <Team team={$store.team2} mirrored={true}/>
 </div>
 
 <style>
