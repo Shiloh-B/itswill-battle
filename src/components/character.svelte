@@ -1,9 +1,9 @@
 <script>
-  
+  export let character;
 </script>
 
 <div class="character">
-  <img src="/images/itsWill7.png" alt="">
+  <img src='/images/{character.image}' alt="">
 </div>
 
 <style>
