@@ -24,19 +24,19 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('battle', args);
   });
 
-  socket.on('lobby', (uid) => {
+  socket.on('lobby', (data) => {
     if(!lobby.length) {
-      lobby.push(uid);
-      socket.join(uid);
+      lobby.push(data);
+      socket.join(data.uid);
+    }
+
+    const foundMatch = lobby.findIndex((d) => { return d.numOfRounds === data.numOfRounds });
+    if(!foundMatch) {
+      lobby.push(data);
+      socket.join(data.uid);
     } else {
-      const oppUid = lobby.shift();
-      socket.emit('lobby', {
-        message: 'found a match',
-        oppId: oppUid,
-      });
-      socket.join(oppUid);
-      // now join a private lobby for that match
-      socket.join()
+      socket.emit(foundMatch.uid, lobby[foundMatch]);
+      lobby.slice(foundMatch);
     }
   })
 });
