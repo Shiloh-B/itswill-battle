@@ -34,7 +34,6 @@ io.on('connection', (socket) => {
       const foundMatch = lobby.findIndex((d) => { return d.numOfRounds === data.numOfRounds });
       if(foundMatch === -1) {
         lobby.push(data);
-        socket.join(data.uid);
         console.log('joined q, no match compatible');
       } else {
         socket.to(lobby[foundMatch].uid).emit('lobby', data);
