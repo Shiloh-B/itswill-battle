@@ -32,7 +32,7 @@ io.on('connection', (socket) => {
       console.log('joined q, q empty');
     } else {
       const foundMatch = lobby.findIndex((d) => { return d.numOfRounds === data.numOfRounds });
-      if(!foundMatch) {
+      if(foundMatch === -1) {
         lobby.push(data);
         socket.join(data.uid);
         console.log('joined q, no match compatible');

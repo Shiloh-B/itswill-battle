@@ -1,14 +1,19 @@
 <script>
   import socket from "../socket";
+  let id = Math.random();
 
   let character1;
   let character2;
   let character3;
   let teamName;
 
+  socket.on(id, (args) => {
+    console.log(args);
+  });
+
   function emit() {
     socket.emit("lobby", {
-      uid: Math.random(),
+      uid: id,
       numOfRounds: 1,
       teamData: {
         teamName: teamName,
