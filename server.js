@@ -11,7 +11,9 @@ let lobby = [];
 /**
  * data assumption
  * {
- *    
+ *    uid: 6 digit nano id
+ *    numOfRounds: rounds player has completed
+ *    teamData: players team data
  * }
  */
 
