@@ -1,11 +1,13 @@
 <script>
-	import GameBoard from './game_board.svelte';
+	import CharacterSelector from './character-selector.svelte';
+import GameBoard from './game_board.svelte';
 	import Nav from './nav.svelte';
 </script>
 
 <div class="game-wrapper">
 	<Nav/>
-	<GameBoard/>
+	<!-- <GameBoard/> -->
+	<CharacterSelector/>
 </div>
 
 <style>
