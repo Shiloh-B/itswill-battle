@@ -1,6 +1,8 @@
 <script>
   import socket from "../socket";
-  let id = Math.random();
+  import { nanoid } from 'nanoid';
+
+  let id = nanoid(10);
 
   let character1;
   let character2;
