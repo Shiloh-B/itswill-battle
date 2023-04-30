@@ -25,19 +25,20 @@ io.on('connection', (socket) => {
   });
 
   socket.on('lobby', (data) => {
+    socket.join(data.uid);
     console.log(data);
     if(!lobby.length) {
       lobby.push(data);
-      socket.join(data.uid);
       console.log('joined q, q empty');
     } else {
       const foundMatch = lobby.findIndex((d) => { return d.numOfRounds === data.numOfRounds });
-      if(!foundMatch) {
+      if(foundMatch === -1) {
         lobby.push(data);
         socket.join(data.uid);
         console.log('joined q, no match compatible');
       } else {
-        socket.emit(foundMatch.uid, lobby[foundMatch]);
+        socket.emit(foundMatch.uid, data);
+        socket.emit(data.uid, lobby[foundMatch]);
         lobby.slice(foundMatch);
         console.log('found match');
         console.log(lobby[foundMatch]);
