@@ -8,11 +8,17 @@ const io = new Server({
 
 let lobby = [];
 
+/**
+ * data assumption
+ * {
+ *    
+ * }
+ */
+
 io.on('connection', (socket) => {
   socket.broadcast.emit('hello', socket.id);
 
   socket.on('battle', (args) => {
-    console.log(args);
     socket.broadcast.emit('battle', args);
   });
 
@@ -20,17 +26,13 @@ io.on('connection', (socket) => {
     if(!lobby.length) {
       lobby.push(uid);
       socket.join(uid);
-      console.log(lobby);
     } else {
       const oppUid = lobby.shift();
       socket.emit('lobby', {
         message: 'found a match',
         oppId: oppUid,
-        oppTeamDate: oppTeamData
       });
       socket.join(oppUid);
-      console.log(lobby);
-
       // now join a private lobby for that match
       socket.join()
     }
