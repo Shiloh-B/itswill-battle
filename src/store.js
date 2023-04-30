@@ -22,6 +22,12 @@ let gameState = {
         power: 1,
         health: 2
       },
+      {
+        type: 'empty',
+        image: '',
+        power: 0,
+        health: 0
+      }
     ]
   },
   team2: {

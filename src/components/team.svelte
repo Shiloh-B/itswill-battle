@@ -3,6 +3,8 @@
 
 	export let team;
   export let mirrored = false;
+
+
 </script>
 
 <div class="team {mirrored ? 'mirrored' : ''}">

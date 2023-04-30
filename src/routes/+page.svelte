@@ -1,5 +1,6 @@
 <script>
 	import GameWrapper from "../components/game_wrapper.svelte";
+
 </script>
 
 <h1>ItsWill Battle</h1>
