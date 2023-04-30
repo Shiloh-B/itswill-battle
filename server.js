@@ -25,23 +25,23 @@ io.on('connection', (socket) => {
   });
 
   socket.on('lobby', (data) => {
-    socket.join(data.uid);
     console.log(data);
     if(!lobby.length) {
+      console.log(`${data.uid} joining room: ${data.uid}`);
+      socket.join(data.uid);
       lobby.push(data);
       console.log('joined q, q empty');
     } else {
       const foundMatch = lobby.findIndex((d) => { return d.numOfRounds === data.numOfRounds });
       if(foundMatch === -1) {
+        socket.join(data.uid);
         lobby.push(data);
         console.log('joined q, no match compatible');
       } else {
-        socket.join(lobby[foundMatch].uid);
-        socket.to(lobby[foundMatch].uid).emit('gameData', data);
-        socket.to(lobby[foundMatch].uid).emit('gameData', lobby[foundMatch]);
-        lobby.slice(foundMatch);
-        console.log('found match');
-        console.log(lobby[foundMatch]);
+        const foundMatchData = lobby[foundMatch];
+        socket.join(foundMatchData.uid);
+        io.to(foundMatchData.uid).emit('gameData', [data, foundMatchData]);
+        lobby.splice(foundMatch, 1);
       }
     }
   })
