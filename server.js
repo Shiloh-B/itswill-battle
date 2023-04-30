@@ -30,18 +30,18 @@ io.on('connection', (socket) => {
       lobby.push(data);
       socket.join(data.uid);
       console.log('joined q, q empty');
-    }
-
-    const foundMatch = lobby.findIndex((d) => { return d.numOfRounds === data.numOfRounds });
-    if(!foundMatch) {
-      lobby.push(data);
-      socket.join(data.uid);
-      console.log('joined q, no match compatible');
     } else {
-      socket.emit(foundMatch.uid, lobby[foundMatch]);
-      lobby.slice(foundMatch);
-      console.log('found match');
-      console.log(lobby[foundMatch]);
+      const foundMatch = lobby.findIndex((d) => { return d.numOfRounds === data.numOfRounds });
+      if(!foundMatch) {
+        lobby.push(data);
+        socket.join(data.uid);
+        console.log('joined q, no match compatible');
+      } else {
+        socket.emit(foundMatch.uid, lobby[foundMatch]);
+        lobby.slice(foundMatch);
+        console.log('found match');
+        console.log(lobby[foundMatch]);
+      }
     }
   })
 });
