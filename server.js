@@ -36,7 +36,7 @@ io.on('connection', (socket) => {
         lobby.push(data);
         console.log('joined q, no match compatible');
       } else {
-        socket.emit(foundMatch.uid, data);
+        socket.emit(lobby[foundMatch].uid, data);
         socket.emit(data.uid, lobby[foundMatch]);
         lobby.splice(foundMatch, 1);
         console.log('found match');
