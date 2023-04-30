@@ -5,20 +5,20 @@ let gameState = {
     name: 'Team Justin',
     characters: [
       {
-        type: "itsWill7",
-        image: 'itsWill7.png',
+        type: "itswill7",
+        image: 'itswill7.png',
         power: 1,
         health: 2
       },
       {
-        type: "itsWill7",
-        image: 'itsWill7.png',
+        type: "itswill7",
+        image: 'itswillHmm.png',
         power: 1,
         health: 2
       },
       {
-        type: "itsWill7",
-        image: 'itsWill7.png',
+        type: "itswill7",
+        image: 'itswillHUH.png',
         power: 1,
         health: 2
       },
@@ -28,20 +28,20 @@ let gameState = {
     name: 'Team Brett',
     characters: [
       {
-        type: "itsWill7",
-        image: 'itsWill7.png',
+        type: "itswill7",
+        image: 'itswill7.png',
         power: 1,
         health: 2
       },
       {
-        type: "itsWill7",
-        image: 'itsWill7.png',
+        type: "itswill7",
+        image: 'itswillHmm.png',
         power: 1,
         health: 2
       },
       {
-        type: "itsWill7",
-        image: 'itsWill7.png',
+        type: "itswill7",
+        image: 'itswillHUH.png',
         power: 1,
         health: 2
       },
