@@ -7,7 +7,7 @@
   let character3;
   let teamName;
   console.log('my id is: ' + id);
-  socket.on(id, (args) => {
+  socket.on('gameData', (args) => {
     console.log(args);
   });
 
