@@ -1,6 +1,8 @@
 import { writable } from "svelte/store";
 
 let gameState = {
+  matchmakingStatus: '',
+  oppTeamData: null,
   team1: {
     name: 'Team Justin',
     characters: [

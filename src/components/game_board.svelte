@@ -4,7 +4,6 @@
   import socket from '../socket';
 
   const battleHandler = () => {
-    console.log($store.team1);
     socket.emit('lobby', $store.team1.name);
   }
 
@@ -12,7 +11,7 @@
     console.log(args);
   });
   socket.on('lobby', (args) => {
-    console.log(args);
+    socket.emit(args, 'my private message');
   })
 
 </script>
