@@ -1,28 +1,22 @@
 <script>
   import Team from "./team.svelte";
+  import TeamSelector from './team-selector.svelte';
   import store from '../store';
   import socket from '../socket';
 
-  const battleHandler = () => {
-    socket.emit('lobby', $store.team1.name);
-  }
-
-  socket.on('battle', (args) => {
-    console.log(args);
-  });
-  socket.on('lobby', (args) => {
-    socket.emit(args, 'my private message');
-  })
-
 </script>
 <div class='game-container'>
+  {#if $store.matchmakingStatus === ''}
+    <TeamSelector />
+    <div>
+      <h3 class='battle-button'>Battle</h3>
+    </div>
+  {:else}
   <div class="team-container">
     <Team team={$store.team1}/>
     <Team team={$store.team2} mirrored={true}/>
   </div>
-  <div>
-    <h3 class='battle-button' on:click={battleHandler}>Battle</h3>
-  </div>
+  {/if}
 </div>
 
 <style>

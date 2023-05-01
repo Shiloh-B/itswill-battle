@@ -3,51 +3,29 @@ import { writable } from "svelte/store";
 let gameState = {
   matchmakingStatus: '',
   oppTeamData: null,
-  team1: {
-    name: 'Team Justin',
-    characters: [
-      {
-        type: "itswill7",
-        image: 'itswill7.png',
-        power: 1,
-        health: 2
-      },
-      {
-        type: "itswill7",
-        image: 'itswillHmm.png',
-        power: 1,
-        health: 2
-      },
-      {
-        type: "itswill7",
-        image: 'itswillHUH.png',
-        power: 1,
-        health: 2
-      }
-    ]
-  },
-  team2: {
-    name: 'Team Brett',
-    characters: [
-      {
-        type: "itswill7",
-        image: 'itswill7.png',
-        power: 1,
-        health: 2
-      },
-      {
-        type: "itswill7",
-        image: 'itswillHmm.png',
-        power: 1,
-        health: 2
-      },
-      {
-        type: "itswill7",
-        image: 'itswillHUH.png',
-        power: 1,
-        health: 2
-      },
-    ]
+  baseCharacters: [
+    {
+      type: "itswill7",
+      image: 'itswill7.png',
+      power: 1,
+      health: 2
+    },
+    {
+      type: "itswillHmm",
+      image: 'itswillHmm.png',
+      power: 1,
+      health: 2
+    },
+    {
+      type: "itswillHuh",
+      image: 'itswillHUH.png',
+      power: 1,
+      health: 2
+    }
+  ],
+  teamData: {
+    name: '',
+    characters: []
   }
 };
 

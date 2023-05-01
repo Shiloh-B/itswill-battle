@@ -7,13 +7,13 @@
 
 <div class="game-wrapper">
 	<Nav/>
-	<!-- <GameBoard/> -->
+	<GameBoard/>
 	
 	{#if $store.matchmakingStatus !== ''}
 		<div>{$store.matchmakingStatus}</div>
 		<br />
 	{/if}
-	<CharacterSelector/>
+	<!-- <CharacterSelector/> -->
 </div>
 
 <style>
