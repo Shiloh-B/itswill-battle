@@ -13,6 +13,7 @@
 		} else {
 			$store.matchmakingStatus.isMatched = 'q'
 		}
+		console.log(args);
 	});
 
 </script>

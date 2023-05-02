@@ -6,6 +6,7 @@ let gameState = {
   matchmakingStatus: '', // q === queued, f === found match, '' === idle
   oppTeamData: null,
   itemSelected: null,
+  numOfRounds: 0,
   baseCharacters: [
     {
       type: "itswill7",
@@ -28,12 +29,7 @@ let gameState = {
   ],
   teamData: {
     name: 'Dreamy bull',
-    characters: [{
-      type: "itswillHuh",
-      image: 'itswillHUH.png',
-      power: 1,
-      health: 2
-    }, null, null, null, null]
+    characters: [null, null, null, null, null]
   }
 };
 

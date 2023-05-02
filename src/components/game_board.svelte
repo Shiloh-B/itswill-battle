@@ -4,18 +4,22 @@
   import store from '../store';
   import socket from '../socket';
 
+  const battleHandler = () => {
+    socket.emit('lobby', {
+      uid: $store.uid,
+      numOfRounds: $store.numOfRounds,
+      teamData: $store.teamData
+    });
+  }
 </script>
 <div class='game-container'>
+  <TeamSelector />
   {#if $store.matchmakingStatus === ''}
-    <TeamSelector />
-    <div>
-      <h3 class='battle-button'>Battle</h3>
-    </div>
-  {:else}
-  <div class="team-container">
-    <Team team={$store.team1}/>
-    <Team team={$store.team2} mirrored={true}/>
+  <div>
+    <h3 class='battle-button' on:click={battleHandler}>Battle</h3>
   </div>
+  {:else}
+    <h3>{$store.matchmakingStatus === 'q' ? 'Waiting for a match...' : 'Found a match!'}</h3>
   {/if}
 </div>
 

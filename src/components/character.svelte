@@ -1,7 +1,7 @@
 <script>
   import store from '../store';
   export let character;
-  export let selectable;
+  export let selectable = false;
 
   function selectCharacter () {
     if(selectable) {
