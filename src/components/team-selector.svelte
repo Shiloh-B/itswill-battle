@@ -4,7 +4,21 @@
 </script>
 
 <div class='team-selector-container'>
-  <h3>Choose 2 hero's!</h3>
+  <div class="active-characters-container">
+    <ul class="active-characters">
+      {#each $store.teamData.characters as character}
+        {#if character !== null}
+        <Character {character} />
+        {:else}
+          <li class="active-character-card">
+            <div class:item-selected={$store.itemSelected} class="empty-character-card-contents"></div>
+          </li>
+        {/if}
+      {/each}
+    </ul>
+  </div>
+
+  <h3>Choose your will's!</h3>
   <div class='team-container'>
     {#each $store.baseCharacters as character}
       <Character {character} />
@@ -25,4 +39,52 @@
     width: 50%;
     justify-content: space-around;
   }
+
+  .active-characters {
+    background: #fff;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .active-character-card {
+    font-weight: bold;
+    padding: 4px;
+  }
+
+  .active-character-card__name {
+    margin: 4px 0;
+  }
+
+  .empty-character-card-contents {
+    background: black;
+    height: 120px;
+    min-width:100px;
+  }
+
+  .empty-character-card-contents.item-selected:hover {
+    background: lightskyblue;
+  }
+
+  .character-stats {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .active-character-card__health,
+  .active-character-card__power {
+    padding: 3px 6px;
+    border-radius: 4px;
+  }
+
+  .active-character-card__health {
+    background: red;
+  }
+
+  .active-character-card__power {
+    background: grey;
+  }
+
+
 </style>

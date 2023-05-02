@@ -1,8 +1,11 @@
 import { writable } from "svelte/store";
+import { nanoid } from 'nanoid';
 
 let gameState = {
-  matchmakingStatus: '',
+  uid: nanoid(6),
+  matchmakingStatus: '', // q === queued, f === found match, '' === idle
   oppTeamData: null,
+  itemSelected: null,
   baseCharacters: [
     {
       type: "itswill7",
@@ -25,7 +28,12 @@ let gameState = {
   ],
   teamData: {
     name: '',
-    characters: []
+    characters: [{
+      type: "itswillHuh",
+      image: 'itswillHUH.png',
+      power: 1,
+      health: 2
+    }, null, null, null, null]
   }
 };
 

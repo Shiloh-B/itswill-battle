@@ -1,5 +1,5 @@
 <script>
-	import GameWrapper from "../components/game_wrapper.svelte";
+	import GameWrapper from "../../components/game_wrapper.svelte";
 
 </script>
 

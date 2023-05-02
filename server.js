@@ -20,10 +20,6 @@ let lobby = [];
 io.on('connection', (socket) => {
   socket.broadcast.emit('hello', socket.id);
 
-  socket.on('battle', (args) => {
-    socket.broadcast.emit('battle', args);
-  });
-
   socket.on('lobby', (data) => {
     console.log('attempting to find a match...');
     console.log(data);
