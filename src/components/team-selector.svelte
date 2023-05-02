@@ -27,12 +27,14 @@
     </ul>
   </div>
 
+  {#if $store.matchmakingStatus === ''}
   <h3>Choose your will's!</h3>
   <div class='team-container'>
     {#each $store.baseCharacters as character}
       <Character {character} selectable=true />
     {/each}
   </div>
+  {/if}
 </div>
 
 <style>
