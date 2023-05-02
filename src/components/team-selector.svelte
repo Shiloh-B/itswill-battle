@@ -18,6 +18,7 @@
           <Character {character} />
         </li>
         {:else}
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
           <li class="active-character-card" data-character-index={index} on:click={putCharacterInSlot}>
             <div class:item-selected={$store.itemSelected} class="empty-character-card-contents"></div>
           </li>
@@ -26,12 +27,14 @@
     </ul>
   </div>
 
+  {#if $store.matchmakingStatus === ''}
   <h3>Choose your will's!</h3>
   <div class='team-container'>
     {#each $store.baseCharacters as character}
       <Character {character} selectable=true />
     {/each}
   </div>
+  {/if}
 </div>
 
 <style>

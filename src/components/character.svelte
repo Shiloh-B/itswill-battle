@@ -10,6 +10,7 @@
   }
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="character-card" on:click={selectCharacter}>
   <img src="/images/{character.image}" alt="{character.type}">
   <p class="character-card__name">{character.type}</p>
