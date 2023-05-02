@@ -70,8 +70,8 @@
 
   .empty-character-card-contents {
     background: black;
-    height: 120px;
-    min-width:100px;
+    height: 130px;
+    width:130px;
   }
 
   .empty-character-card-contents.item-selected:hover {
