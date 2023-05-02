@@ -1,16 +1,24 @@
 <script>
   import store from '../store';
   import Character from './character.svelte';
+
+  function putCharacterInSlot (e) {
+    if(!$store.itemSelected) return false;
+    $store.teamData.characters[e.currentTarget.dataset.characterIndex] = $store.itemSelected;
+    $store.itemSelected = null;
+  }
 </script>
 
 <div class='team-selector-container'>
   <div class="active-characters-container">
     <ul class="active-characters">
-      {#each $store.teamData.characters as character}
+      {#each $store.teamData.characters as character, index}
         {#if character !== null}
-        <Character {character} />
+        <li>
+          <Character {character} />
+        </li>
         {:else}
-          <li class="active-character-card">
+          <li class="active-character-card" data-character-index={index} on:click={putCharacterInSlot}>
             <div class:item-selected={$store.itemSelected} class="empty-character-card-contents"></div>
           </li>
         {/if}
@@ -21,7 +29,7 @@
   <h3>Choose your will's!</h3>
   <div class='team-container'>
     {#each $store.baseCharacters as character}
-      <Character {character} />
+      <Character {character} selectable=true />
     {/each}
   </div>
 </div>

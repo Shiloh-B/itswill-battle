@@ -27,7 +27,7 @@ let gameState = {
     }
   ],
   teamData: {
-    name: '',
+    name: 'Dreamy bull',
     characters: [{
       type: "itswillHuh",
       image: 'itswillHUH.png',

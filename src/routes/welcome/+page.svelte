@@ -3,9 +3,9 @@
   import { goto } from '$app/navigation';
   let teamName = '';
   const nameSubmitHandler = () => {
-    $store.teamName = teamName;
+    $store.teamData.name = teamName;
     if(teamName !== '') {
-      window.location.assign('/home');
+      goto("/home");
     }
   }
 </script>
