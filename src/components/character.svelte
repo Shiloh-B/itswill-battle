@@ -1,18 +1,22 @@
 <script>
   import store from '../store';
   export let character;
-
+  let selected;
+  let isSelected = false;
   const characterSelectionHandler = () => {
-    const selected = $store.teamData.characters.findIndex((c) => { return c.type === character.type });
-    if(selected !== -1) {
+    selected = $store.teamData.characters.findIndex((c) => { return c.type === character.type });
+    isSelected = selected !== -1;
+    if(isSelected) {
+      
       $store.teamData.characters.splice(selected, 1);
     } else {
       $store.teamData.characters.push(character);
     }
+    console.log($store.teamData);
   }
 </script>
 
-<div class='character {$store.teamData.characters.find((c) => { return c.type === character.type }) && 'selected'}'
+<div class={isSelected ? 'character selected' : 'character'}
   on:click={characterSelectionHandler}
 >
   <img src='/images/{character.image}' alt="">
@@ -26,7 +30,7 @@
   }
 
   .selected {
-    border: 2px solid blue;
+    border: 5px solid red;
   }
 
   img {
