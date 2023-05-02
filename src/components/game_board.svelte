@@ -3,6 +3,7 @@
   import TeamSelector from './team-selector.svelte';
   import store from '../store';
   import socket from '../socket';
+    import OpposingTeam from "./opposing_team.svelte";
 
   const battleHandler = () => {
     socket.emit('lobby', {
@@ -21,6 +22,10 @@
   {:else}
     <h3>{$store.matchmakingStatus === 'q' ? 'Waiting for a match...' : 'Found a match!'}</h3>
   {/if}
+  {#if $store.matchmakingStatus === 'f' && $store.oppTeamData !== null}
+    <OpposingTeam/>
+  {/if}
+  
 </div>
 
 <style>

@@ -6,12 +6,13 @@
 	import socket from '../socket';
 
 	// found a game/q'd
-	socket.on('lobby', (args) => {
-		if(args.find((d) => { return d.uid !== $store.uid })) {
-			$store.oppTeamData = args.teamData;
-			$store.matchmakingStatus.isMatched = 'f';
+	socket.on('gameData', (args) => {
+		const oppTeam = args.find((d) => { return d.uid !== $store.uid });
+		if(oppTeam) {
+			$store.oppTeamData = oppTeam;
+			$store.matchmakingStatus = 'f';
 		} else {
-			$store.matchmakingStatus.isMatched = 'q'
+			$store.matchmakingStatus = 'q'
 		}
 		console.log(args);
 	});

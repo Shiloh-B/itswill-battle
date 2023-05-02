@@ -1,11 +1,13 @@
 <script>
   import store from '../../store';
-  import { goto } from '$app/navigation';
+  import { goto } from '$app/navigation'
   let teamName = '';
-  const nameSubmitHandler = () => {
+  const nameSubmitHandler = (e) => {
+    e.preventDefault();
+    console.log(teamName);
     $store.teamData.name = teamName;
     if(teamName !== '') {
-      goto("/home");
+      goto('/home');
     }
   }
 </script>
