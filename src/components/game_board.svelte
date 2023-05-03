@@ -3,7 +3,7 @@
   import TeamSelector from './team-selector.svelte';
   import store from '../store';
   import socket from '../socket';
-    import OpposingTeam from "./opposing_team.svelte";
+  import OpposingTeam from "./opposing_team.svelte";
 
   const battleHandler = () => {
     socket.emit('lobby', {
@@ -14,7 +14,7 @@
   }
 </script>
 <div class='game-container'>
-  <TeamSelector />
+  <TeamSelector/>
   {#if $store.matchmakingStatus === ''}
   <div>
     <h3 class='battle-button' on:click={battleHandler}>Battle</h3>
@@ -34,14 +34,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-
-  .team-container {
-    display: flex;
-    justify-content: space-between;
-    border: 2px dashed black;
-    padding: 30px 10px;
-    width: 90%;
   }
 
   .battle-button {

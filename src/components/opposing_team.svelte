@@ -35,10 +35,6 @@
     padding: 4px;
   }
 
-  .active-character-card__name {
-    margin: 4px 0;
-  }
-
   .empty-character-card-contents {
     background: black;
     height: 130px;
@@ -47,24 +43,5 @@
 
   .empty-character-card-contents.item-selected:hover {
     background: lightskyblue;
-  }
-
-  .character-stats {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .active-character-card__health,
-  .active-character-card__power {
-    padding: 3px 6px;
-    border-radius: 4px;
-  }
-
-  .active-character-card__health {
-    background: red;
-  }
-
-  .active-character-card__power {
-    background: grey;
   }
 </style>

@@ -4,6 +4,9 @@
 	import Nav from './nav.svelte';
 	import store from '../store';
 	import socket from '../socket';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 
 	// found a game/q'd
 	socket.on('gameData', (args) => {
@@ -22,11 +25,6 @@
 <div class="game-wrapper">
 	<Nav/>
 	<GameBoard/>
-	
-	{#if $store.matchmakingStatus !== ''}
-		<div>{$store.matchmakingStatus}</div>
-		<br />
-	{/if}
 	<!-- <CharacterSelector/> -->
 </div>
 
