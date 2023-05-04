@@ -1,5 +1,5 @@
 <script>
-  import store from '../store';
+  import store from '../gameState';
   export let character;
   export let selectable = false;
 
@@ -20,11 +20,11 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="character-card" class:selected-character={selected} class:selectable-character={selectable} on:click={selectCharacter}>
-  <img src="/images/{character.image}" alt="{character.type}">
-  <p class="character-card__name">{character.type}</p>
+  <img src="/images/{character?.image || 'nothing_here.png'}" alt="{character?.type}">
+  <p class="character-card__name">{character?.type}</p>
   <div class="character-stats">
-    <span class="character-card__health">{character.health}</span>
-    <span class="character-card__power">{character.power}</span>
+    <span class="character-card__health">{character?.health || 0}</span>
+    <span class="character-card__power">{character?.power || 0}</span>
   </div>
 </div>
 
@@ -32,6 +32,7 @@
   .character-card {
     font-weight: bold;
     padding: 4px;
+    width:150px;
   }
 
   .selectable-character {
@@ -68,8 +69,8 @@
   }
 
   img {
-    width:130px;
-    height:130px;
+    width:100%;
+    /* height:130px; */
   }
 
   .selected-character {

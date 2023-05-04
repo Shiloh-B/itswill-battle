@@ -30,9 +30,8 @@ let gameState = {
   teamData: {
     name: 'Dreamy bull',
     characters: [null, null, null, null, null]
-  }
+  },
+  
 };
 
-let store = writable(gameState);
-
-export default store;
+export default writable(gameState);

@@ -1,7 +1,7 @@
 <script>
   import socket from "../socket";
   import { nanoid } from 'nanoid';
-  import store from '../store';
+  import store from '../gameState';
 
   let id = nanoid(10);
 

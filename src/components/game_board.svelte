@@ -1,7 +1,7 @@
 <script>
   import Team from "./team.svelte";
   import TeamSelector from './team-selector.svelte';
-  import store from '../store';
+  import store from '../gameState';
   import socket from '../socket';
   import OpposingTeam from "./opposing_team.svelte";
 
@@ -17,7 +17,8 @@
   <TeamSelector/>
   {#if $store.matchmakingStatus === ''}
   <div>
-    <h3 class='battle-button' on:click={battleHandler}>Battle</h3>
+    <!-- <h3 class='battle-button' on:click={battleHandler}>Battle</h3> -->
+    <a href="/round">Go To Round</a>
   </div>
   {:else}
     <h3>{$store.matchmakingStatus === 'q' ? 'Waiting for a match...' : 'Found a match!'}</h3>

@@ -1,6 +1,6 @@
 <script>
 	import GameWrapper from "../../components/game_wrapper.svelte";
-	import store from '../../store';
+	import store from '../../gameState';
 </script>
 
 <h1>ItsWill Battle</h1>

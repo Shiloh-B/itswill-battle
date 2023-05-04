@@ -2,9 +2,12 @@
 	import CharacterSelector from './character-selector.svelte';
 	import GameBoard from './game_board.svelte';
 	import Nav from './nav.svelte';
-	import store from '../store';
+	import store from '../gameState';
 	import socket from '../socket';
 	import { createEventDispatcher } from 'svelte';
+	import game_runner from '../game_runner';
+
+	const gr = new game_runner();
 
 	const dispatch = createEventDispatcher();
 
