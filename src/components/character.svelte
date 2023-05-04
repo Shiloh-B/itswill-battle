@@ -7,8 +7,13 @@
 
   function selectCharacter () {
     if (selectable) {
-      $store.itemSelected = character;
-      selected = true;
+      if (!selected) {
+        $store.itemSelected = character;
+        selected = true;
+      } else {
+        selected = false;
+        $store.itemSelected = null;
+      } 
     }
   }
 </script>
