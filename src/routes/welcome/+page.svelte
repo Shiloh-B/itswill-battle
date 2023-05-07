@@ -1,5 +1,5 @@
 <script>
-  import store from '../../store';
+  import store from '../../gameState';
   import { goto } from '$app/navigation'
   let teamName = '';
   const nameSubmitHandler = (e) => {

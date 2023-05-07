@@ -19,7 +19,7 @@
   {#if $store.matchmakingStatus === MatchmakingStatus.NOT_QUEUED}
   <div>
     <h3 class='battle-button' on:click={battleHandler}>Battle</h3>
-    <!-- <a href="/round">Go To Round</a> -->
+    <a href="/round">Go To Round</a>
   </div>
   {:else}
     <h3>{$store.matchmakingStatus === MatchmakingStatus.QUEUED ? 'Waiting for a match...' : 'Found a match!'}</h3>
