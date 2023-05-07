@@ -5,10 +5,10 @@
 	import store from '../gameState';
 	import socket from '../socket';
 	import { createEventDispatcher } from 'svelte';
-	import game_runner from '../game_runner';
+	import GameRunner from '../game_runner';
 	import { MatchmakingStatus } from '../enums';
 
-	const gr = new game_runner();
+	const gr = new GameRunner();
 
 	const dispatch = createEventDispatcher();
 
