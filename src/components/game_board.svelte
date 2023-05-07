@@ -4,6 +4,7 @@
   import store from '../gameState';
   import socket from '../socket';
   import OpposingTeam from "./opposing_team.svelte";
+  import { MatchmakingStatus } from "../enums";
 
   const battleHandler = () => {
     socket.emit('lobby', {
@@ -15,15 +16,15 @@
 </script>
 <div class='game-container'>
   <TeamSelector/>
-  {#if $store.matchmakingStatus === ''}
+  {#if $store.matchmakingStatus === MatchmakingStatus.NOT_QUEUED}
   <div>
-    <!-- <h3 class='battle-button' on:click={battleHandler}>Battle</h3> -->
-    <a href="/round">Go To Round</a>
+    <h3 class='battle-button' on:click={battleHandler}>Battle</h3>
+    <!-- <a href="/round">Go To Round</a> -->
   </div>
   {:else}
-    <h3>{$store.matchmakingStatus === 'q' ? 'Waiting for a match...' : 'Found a match!'}</h3>
+    <h3>{$store.matchmakingStatus === MatchmakingStatus.QUEUED ? 'Waiting for a match...' : 'Found a match!'}</h3>
   {/if}
-  {#if $store.matchmakingStatus === 'f' && $store.oppTeamData !== null}
+  {#if $store.matchmakingStatus === MatchmakingStatus.MATCH_FOUND && $store.oppTeamData !== null}
     <OpposingTeam/>
   {/if}
   

@@ -6,6 +6,7 @@
 	import socket from '../socket';
 	import { createEventDispatcher } from 'svelte';
 	import game_runner from '../game_runner';
+	import { MatchmakingStatus } from '../enums';
 
 	const gr = new game_runner();
 
@@ -16,9 +17,9 @@
 		const oppTeam = args.find((d) => { return d.uid !== $store.uid });
 		if(oppTeam) {
 			$store.oppTeamData = oppTeam;
-			$store.matchmakingStatus = 'f';
+			$store.matchmakingStatus = MatchmakingStatus.MATCH_FOUND;
 		} else {
-			$store.matchmakingStatus = 'q'
+			$store.matchmakingStatus = MatchmakingStatus.QUEUED
 		}
 		console.log(args);
 	});

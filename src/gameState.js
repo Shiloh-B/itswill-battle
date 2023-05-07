@@ -1,9 +1,10 @@
 import { writable } from "svelte/store";
 import { nanoid } from 'nanoid';
+import { MatchmakingStatus } from "./enums";
 
 let gameState = {
   uid: nanoid(6),
-  matchmakingStatus: '', // q === queued, f === found match, '' === idle
+  matchmakingStatus: MatchmakingStatus.NOT_QUEUED,
   oppTeamData: null,
   itemSelected: null,
   numOfRounds: 0,

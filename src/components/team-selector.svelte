@@ -1,6 +1,7 @@
 <script>
   import store from '../gameState';
   import Character from './character.svelte';
+  import { MatchmakingStatus } from '../enums';
 
   function putCharacterInSlot (e) {
     if(!$store.itemSelected) return false;
@@ -27,7 +28,7 @@
     </ul>
   </div>
 
-  {#if $store.matchmakingStatus === ''}
+  {#if $store.matchmakingStatus === MatchmakingStatus.NOT_QUEUED}
   <h3>Choose your will's!</h3>
   <div class='team-container'>
     {#each $store.baseCharacters as character}
