@@ -20,7 +20,7 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="character-card" class:selected-character={selected} class:selectable-character={selectable} on:click={selectCharacter}>
-  <img src="/images/{character?.image || 'nothing_here.png'}" alt="{character?.type}">
+  <div class="character-image" style="background-image:url(/images/{character?.image || 'nothing_here.png'})"></div>
   <p class="character-card__name">{character?.type}</p>
   <div class="character-stats">
     <span class="character-card__health">{character?.health || 0}</span>
@@ -32,7 +32,7 @@
   .character-card {
     font-weight: bold;
     padding: 4px;
-    width:150px;
+    width: 120px;
   }
 
   .selectable-character {
@@ -48,6 +48,13 @@
   .character-card__name {
     margin: 4px 0;
     text-align: center;
+  }
+
+  .character-image {
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100px;
+    width: 100%;
   }
 
   .character-stats {
@@ -67,11 +74,6 @@
 
   .character-card__power {
     background: grey;
-  }
-
-  img {
-    width:100%;
-    /* height:130px; */
   }
 
   .selected-character {
