@@ -3,7 +3,7 @@
   import gameState from "../gameState";
   import Character from '../components/character.svelte';
 
-  import CharacterObj from '../classes/character';
+  import CharacterObj from '../classes/characterBase';
 
   // create a store with a copy of the characters so we can mutate and render the components based on the state of this store
   let roundStateStore = generateRoundStateStore($gameState.teamData.characters, $gameState.oppTeamData?.teamData?.characters); 
@@ -13,7 +13,12 @@
     return new CharacterObj(c.type, c.health, c.power);
   });
 
+  let oppTeamCharacters = $roundStateStore.opposingTeam.characters.map((c) => {
+    return new CharacterObj(c.type, c.health, c.power);
+  });
+
   console.log(teamCharacters);
+  console.log(oppTeamCharacters);
   
   function gameLoop() {
     console.log('calling the loop :)');
