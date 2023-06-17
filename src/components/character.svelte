@@ -53,6 +53,7 @@
   .character-image {
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
     height: 100px;
     width: 100%;
   }
