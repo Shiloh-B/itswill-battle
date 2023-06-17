@@ -5,8 +5,13 @@
 
   import CharacterObj from '../classes/characterBase';
 
+
   // create a store with a copy of the characters so we can mutate and render the components based on the state of this store
   let roundStateStore = generateRoundStateStore($gameState.teamData.characters, $gameState.oppTeamData?.teamData?.characters); 
+
+  const forceUpdate = () => {
+    $roundStateStore = $roundStateStore;
+  }
 
   roundStateStore.subscribe((value) => {
     console.log(value);
@@ -14,11 +19,11 @@
 
   // this needs to be >= animation time per tick (when we get there)
   let teamCharacters = $roundStateStore.playerTeam.characters.map((c) => {
-    return new CharacterObj(c);
+    return new CharacterObj(c, forceUpdate);
   });
 
   let oppTeamCharacters = $roundStateStore.opposingTeam.characters.map((c) => {
-    return new CharacterObj(c);
+    return new CharacterObj(c, forceUpdate);
   });
 
   console.log(teamCharacters);
@@ -32,7 +37,6 @@
 
     await teamCharacter.attack(oppTeamCharacter);
     await oppTeamCharacter.attack(teamCharacter);
-    console.log($roundStateStore);
   }
   // setTimeout(gameLoop, 1000);
   gameLoop();
@@ -40,13 +44,13 @@
 
 <div class="container">
   <div class="team-container player-team">
-    {#each teamCharacters as character}
-      <Character character={character.data}/>
+    {#each $roundStateStore.playerTeam.characters as character}
+      <Character character={character}/>
     {/each}
   </div>
   <div class="team-container">
-    {#each oppTeamCharacters as character}
-      <Character character={character.data}/>
+    {#each $roundStateStore.opposingTeam.characters as character}
+      <Character character={character}/>
     {/each}
   </div>
 </div>

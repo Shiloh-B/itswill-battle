@@ -23,7 +23,7 @@
   <div class="character-image" style="background-image:url(/images/{character?.image || 'nothing_here.png'})"></div>
   <p class="character-card__name">{character?.type}</p>
   <div class="character-stats">
-    <span class="character-card__health">{character?.health || 0}</span>
+    <span class="character-card__health">{character.health || 0}</span>
     <span class="character-card__power">{character?.power || 0}</span>
   </div>
 </div>

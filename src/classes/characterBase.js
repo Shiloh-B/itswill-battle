@@ -1,8 +1,9 @@
 const ANIMATION_DURATION = 1000;
 
 export default class {
-  constructor(charObj) {
+  constructor(charObj, forceUpdate) {
     this.data = charObj;
+    this.forceUpdate = forceUpdate;
   }
 
   getProperty(key) {
@@ -21,7 +22,7 @@ export default class {
         
         enemy.data.health = enemy.data.health - this.data.power;
         console.log("Enemy health is now: " + enemy.data.health);
-
+        this.forceUpdate();
         resolve();
       }, ANIMATION_DURATION);
     })
