@@ -2,6 +2,7 @@
   import store from '../gameState';
   export let character;
   export let selectable = false;
+  export let attacking = false;
 
   $:selected = selectable && $store.itemSelected && $store.itemSelected.type == character.type;
 
@@ -19,7 +20,7 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="character-card" class:selected-character={selected} class:selectable-character={selectable} on:click={selectCharacter}>
+<div class="character-card" class:attacking={attacking} class:selected-character={selected} class:selectable-character={selectable} on:click={selectCharacter}>
   <div class="character-image" style="background-image:url(/images/{character?.image || 'nothing_here.png'})"></div>
   <p class="character-card__name">{character?.type}</p>
   <div class="character-stats">
@@ -81,6 +82,18 @@
     border: 5px dashed rgb(0, 223, 0);
     border-radius: 2px;
     margin: -5px; /* offset the extra spacing created by the border */
+  }
+
+  .attacking {
+    animation: attack 1s ease;
+  }
+
+  @keyframes attack {
+    from {
+      transform: translateX(0);
+    } to {
+      transform: translateX(200px); 
+    }
   }
 
 </style>
