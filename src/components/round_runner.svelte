@@ -8,42 +8,45 @@
   // create a store with a copy of the characters so we can mutate and render the components based on the state of this store
   let roundStateStore = generateRoundStateStore($gameState.teamData.characters, $gameState.oppTeamData?.teamData?.characters); 
 
+  roundStateStore.subscribe((value) => {
+    console.log(value);
+  });
+
   // this needs to be >= animation time per tick (when we get there)
   let teamCharacters = $roundStateStore.playerTeam.characters.map((c) => {
-    return new CharacterObj(c.type, c.health, c.power);
+    return new CharacterObj(c);
   });
 
   let oppTeamCharacters = $roundStateStore.opposingTeam.characters.map((c) => {
-    return new CharacterObj(c.type, c.health, c.power);
+    return new CharacterObj(c);
   });
 
   console.log(teamCharacters);
   console.log(oppTeamCharacters);
   
-  function gameLoop() {
+  async function gameLoop() {
     console.log('calling the loop :)');
-    // current fighters
-    let teamCharacter = $roundStateStore.playerTeam.characters[0];
-    let opposingTeamCharacter = $roundStateStore.opposingTeam.characters[0];
+   
+    let teamCharacter = teamCharacters[0];
+    let oppTeamCharacter = oppTeamCharacters[0];
 
-    // team character attack
-    $roundStateStore.playerTeam.characters[0].health -= teamCharacter.power;
-
-    // opposing character attack
-    $roundStateStore.opposingTeam.characters[0].health -= opposingTeamCharacter.power;
+    await teamCharacter.attack(oppTeamCharacter);
+    await oppTeamCharacter.attack(teamCharacter);
+    console.log($roundStateStore);
   }
   // setTimeout(gameLoop, 1000);
+  gameLoop();
 </script>
 
 <div class="container">
   <div class="team-container player-team">
-    {#each $roundStateStore.playerTeam.characters as character}
-      <Character {character}/>
+    {#each teamCharacters as character}
+      <Character character={character.data}/>
     {/each}
   </div>
   <div class="team-container">
-    {#each $roundStateStore.opposingTeam.characters as character}
-      <Character {character}/>
+    {#each oppTeamCharacters as character}
+      <Character character={character.data}/>
     {/each}
   </div>
 </div>
