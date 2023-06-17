@@ -15,16 +15,6 @@ export default class {
   }
 
   attack(enemy) {
-    return new Promise((resolve, reject) => {
-      // start animation
-      console.log('attacking enemy: ' + enemy.data.type);
-      setTimeout(() => {
-        
-        enemy.data.health = enemy.data.health - this.data.power;
-        console.log("Enemy health is now: " + enemy.data.health);
-        this.forceUpdate();
-        resolve();
-      }, ANIMATION_DURATION);
-    })
+    enemy.data.health = enemy.data.health - this.data.power;
   }
 }
