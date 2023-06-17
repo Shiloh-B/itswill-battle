@@ -4,6 +4,7 @@
   import Character from '../components/character.svelte';
 
   import CharacterObj from '../classes/characterBase';
+  import GameHandlerObj from '../classes/gameHandlerObject';
 
 
   // create a store with a copy of the characters so we can mutate and render the components based on the state of this store
@@ -35,10 +36,11 @@
     let teamCharacter = teamCharacters[0];
     let oppTeamCharacter = oppTeamCharacters[0];
 
-    await teamCharacter.attack(oppTeamCharacter);
-    await oppTeamCharacter.attack(teamCharacter);
+    let gameHandlerObject = new GameHandlerObj(teamCharacter, oppTeamCharacter, forceUpdate);
+
+    await gameHandlerObject.attack();
   }
-  // setTimeout(gameLoop, 1000);
+  // setTimeout(gameLoop, 1000); 
   gameLoop();
 </script>
 
